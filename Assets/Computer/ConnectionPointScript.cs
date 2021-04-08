@@ -8,6 +8,8 @@ public class ConnectionPointScript : MonoBehaviour
     public GameObject[] ConnectTo;
     public GameObject ObjectToConnectTo;
 
+    public List<GameObject> AttachedComponents;
+
     //bool tutorial = true;
     bool connected = false;
 
@@ -30,7 +32,6 @@ public class ConnectionPointScript : MonoBehaviour
             // Check all connections if in range
             for(int i = 0; i < ConnectionPoints.Length; i++)
             {
-                Debug.Log("Distance = " + Vector3.Distance(ConnectionPoints[i].transform.position, ConnectTo[i].transform.position));
                 if (Vector3.Distance(ConnectionPoints[i].transform.position, ConnectTo[i].transform.position) > threshhold)
                 {
                     connect = false;
@@ -40,9 +41,23 @@ public class ConnectionPointScript : MonoBehaviour
 
             if(connect)
             {
-                // Connect pieces together
-                connected = true;
-                this.transform.parent = ObjectToConnectTo.transform;
+                if(ObjectToConnectTo.GetComponent<ConnectionPointScript>().AttachedComponents.Count > 0)
+                {
+                    foreach(GameObject i in ObjectToConnectTo.GetComponent<ConnectionPointScript>().AttachedComponents)
+                    {
+                        if(i.GetComponent<IdScript>().id == this.GetComponent<IdScript>().id)
+                        {
+                            // Set component active on parent
+                            i.SetActive(true); 
+
+                            // Set all active children active on parent
+                            // ToDo
+
+                            // Destroy this component
+                            Destroy(this.gameObject);
+                        }
+                    }
+                }
             }
         }
     }

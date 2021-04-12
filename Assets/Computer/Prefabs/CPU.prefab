@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6737522088938826509}
   - component: {fileID: 1492492510537453214}
   - component: {fileID: 3237820129193337812}
-  - component: {fileID: 2225557839405476606}
   m_Layer: 0
   m_Name: CPU
   m_TagString: Untagged
@@ -147,21 +146,9 @@ MonoBehaviour:
   ConnectTo:
   - {fileID: 0}
   ObjectToConnectTo: {fileID: 0}
-  AttachedComponents: []
-  threshhold: 0.3
---- !u!114 &2225557839405476606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3728084203302732877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0832dad30d05394cae15b6443eae683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 1
+  threshhold: 0.001
+  snapPosition: {x: 0, y: 0, z: 0}
+  snapRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &9055274500819644409
 GameObject:
   m_ObjectHideFlags: 0

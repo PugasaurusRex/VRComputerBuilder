@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1440411492369544540}
   - component: {fileID: 1440411492369544541}
   - component: {fileID: 1440411492369544514}
-  - component: {fileID: -6234421975396346873}
   m_Layer: 0
   m_Name: WaterCooling
   m_TagString: Untagged
@@ -137,16 +136,3 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
---- !u!114 &-6234421975396346873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6979650921548278857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0832dad30d05394cae15b6443eae683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0

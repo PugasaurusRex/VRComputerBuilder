@@ -8,19 +8,23 @@ public class ConnectionPointScript : MonoBehaviour
     public GameObject[] ConnectTo;
     public GameObject ObjectToConnectTo;
 
-    public List<GameObject> AttachedComponents;
-
     //bool tutorial = true;
     bool connected = false;
+    bool disableCollider = false;
 
-    public float threshhold = .3f;
+    public float threshhold = .01f;
 
     OVRGrabbable grab;
+    Rigidbody Rig;
+
+    public Vector3 snapPosition;
+    public Vector3 snapRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         grab = this.GetComponent<OVRGrabbable>();
+        Rig = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -28,37 +32,29 @@ public class ConnectionPointScript : MonoBehaviour
     {
         if(!connected && grab.isGrabbed)
         {
-            bool connect = true;
+            connected = true;
             // Check all connections if in range
             for(int i = 0; i < ConnectionPoints.Length; i++)
             {
                 if (Vector3.Distance(ConnectionPoints[i].transform.position, ConnectTo[i].transform.position) > threshhold)
                 {
-                    connect = false;
+                    connected = false;
                     break;
                 }
             }
+        }
 
-            if(connect)
+        if (connected)
+        {
+            if(!disableCollider && !grab.isGrabbed)
             {
-                if(ObjectToConnectTo.GetComponent<ConnectionPointScript>().AttachedComponents.Count > 0)
-                {
-                    foreach(GameObject i in ObjectToConnectTo.GetComponent<ConnectionPointScript>().AttachedComponents)
-                    {
-                        if(i.GetComponent<IdScript>().id == this.GetComponent<IdScript>().id)
-                        {
-                            // Set component active on parent
-                            i.SetActive(true); 
-
-                            // Set all active children active on parent
-                            // ToDo
-
-                            // Destroy this component
-                            Destroy(this.gameObject);
-                        }
-                    }
-                }
+                this.GetComponent<Collider>().enabled = false;
+                disableCollider = true;
             }
+
+            this.transform.parent = ObjectToConnectTo.transform;
+            this.transform.localPosition = snapPosition;
+            this.transform.localEulerAngles = snapRotation;
         }
     }
 }

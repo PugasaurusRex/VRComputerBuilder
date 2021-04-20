@@ -146,7 +146,7 @@ MonoBehaviour:
   ConnectTo:
   - {fileID: 0}
   ObjectToConnectTo: {fileID: 0}
-  threshhold: 0.001
+  threshhold: 0.01
   snapPosition: {x: 0, y: 0, z: 0}
   snapRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &9055274500819644409

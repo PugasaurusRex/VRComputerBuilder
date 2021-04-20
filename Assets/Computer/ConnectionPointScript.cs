@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ConnectionPointScript : MonoBehaviour
 {
+    public TMP_Text HoldingText;
+
     public GameObject[] ConnectionPoints;
     public GameObject[] ConnectTo;
     public GameObject ObjectToConnectTo;
@@ -11,6 +14,7 @@ public class ConnectionPointScript : MonoBehaviour
     //bool tutorial = true;
     bool connected = false;
     bool disableCollider = false;
+    bool grabbed = false;
 
     public float threshhold = .01f;
 
@@ -32,6 +36,9 @@ public class ConnectionPointScript : MonoBehaviour
     {
         if(!connected && grab.isGrabbed)
         {
+            HoldingText.text = gameObject.name;
+            grabbed = true;
+
             connected = true;
             // Check all connections if in range
             for(int i = 0; i < ConnectionPoints.Length; i++)
@@ -42,6 +49,12 @@ public class ConnectionPointScript : MonoBehaviour
                     break;
                 }
             }
+        }
+
+        if(grabbed && !grab.isGrabbed)
+        {
+            grabbed = false;
+            HoldingText.text = "";
         }
 
         if (connected)

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2523222258533253657}
   - component: {fileID: 8356163598503412055}
   m_Layer: 0
-  m_Name: PSU
+  m_Name: Power Supply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430981879918091380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: -0.438, y: 0.967, z: 1.608}
   m_LocalScale: {x: 0.007, y: 0.017, z: 0.013}
   m_Children:
   - {fileID: 458867019781099630}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!33 &5691275438127322193
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144fd8a1d006db41ae7a2066711938e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoldingText: {fileID: 0}
   ConnectionPoints:
   - {fileID: 6839606204932467489}
   ConnectTo:

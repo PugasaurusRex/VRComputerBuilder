@@ -23,6 +23,7 @@ public class ConnectionPointScript : MonoBehaviour
 
     public Vector3 snapPosition;
     public Vector3 snapRotation;
+    public GameObject resetPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -39,14 +40,18 @@ public class ConnectionPointScript : MonoBehaviour
             HoldingText.text = gameObject.name;
             grabbed = true;
 
-            connected = true;
             // Check all connections if in range
-            for(int i = 0; i < ConnectionPoints.Length; i++)
+            if(ConnectionPoints.Length > 0)
             {
-                if (Vector3.Distance(ConnectionPoints[i].transform.position, ConnectTo[i].transform.position) > threshhold)
+                connected = true;
+
+                for (int i = 0; i < ConnectionPoints.Length; i++)
                 {
-                    connected = false;
-                    break;
+                    if (Vector3.Distance(ConnectionPoints[i].transform.position, ConnectTo[i].transform.position) > threshhold)
+                    {
+                        connected = false;
+                        break;
+                    }
                 }
             }
         }
@@ -68,6 +73,13 @@ public class ConnectionPointScript : MonoBehaviour
             this.transform.parent = ObjectToConnectTo.transform;
             this.transform.localPosition = snapPosition;
             this.transform.localEulerAngles = snapRotation;
+        }
+        else
+        {
+            if(transform.position.y < 0.1f)
+            {
+                transform.position = resetPoint.transform.position;
+            }
         }
     }
 }

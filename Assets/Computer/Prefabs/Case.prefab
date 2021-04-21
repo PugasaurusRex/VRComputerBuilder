@@ -60,6 +60,36 @@ Transform:
   m_Father: {fileID: 5814146025706210178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833280158872140969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6290484570499709750}
+  m_Layer: 0
+  m_Name: SSDConnector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6290484570499709750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833280158872140969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.1, y: 0, z: -35.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5814146025706210178}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4867614068969714411
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +134,7 @@ GameObject:
   - component: {fileID: 5253043222615279704}
   - component: {fileID: 8350159691414926174}
   - component: {fileID: 7854188590033217575}
+  - component: {fileID: -4014210864191030279}
   m_Layer: 0
   m_Name: Case
   m_TagString: Untagged
@@ -127,6 +158,7 @@ Transform:
   - {fileID: 7147615125557666433}
   - {fileID: 7875665458701823564}
   - {fileID: 5836467789046551898}
+  - {fileID: 6290484570499709750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,6 +266,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 249.95502, y: 147.99715, z: 73.605255}
   m_Center: {x: -8.741492, y: 17.162226, z: -9.051641}
+--- !u!114 &-4014210864191030279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418737939705835921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f144fd8a1d006db41ae7a2066711938e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldingText: {fileID: 0}
+  ConnectionPoints: []
+  ConnectTo: []
+  ObjectToConnectTo: {fileID: 0}
+  threshhold: 0.01
+  snapPosition: {x: 0, y: 0, z: 0}
+  snapRotation: {x: 0, y: 0, z: 0}
+  resetPoint: {fileID: 0}
 --- !u!1 &7536474718628710250
 GameObject:
   m_ObjectHideFlags: 0

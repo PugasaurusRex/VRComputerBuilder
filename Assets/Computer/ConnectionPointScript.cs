@@ -76,9 +76,10 @@ public class ConnectionPointScript : MonoBehaviour
         }
         else
         {
-            if(transform.position.y < 0.1f)
+            if(transform.position.y < 0.2f)
             {
                 transform.position = resetPoint.transform.position;
+                Rig.velocity = Vector3.zero;
             }
         }
     }

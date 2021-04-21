@@ -22,6 +22,7 @@ public class ConnectionPointScript : MonoBehaviour
     Rigidbody Rig;
 
     public Vector3 snapPosition;
+    public Vector3 snapScale;
     public Vector3 snapRotation;
     public GameObject resetPoint;
 
@@ -73,6 +74,7 @@ public class ConnectionPointScript : MonoBehaviour
             this.transform.parent = ObjectToConnectTo.transform;
             this.transform.localPosition = snapPosition;
             this.transform.localEulerAngles = snapRotation;
+            this.transform.localScale = snapScale;
         }
         else
         {

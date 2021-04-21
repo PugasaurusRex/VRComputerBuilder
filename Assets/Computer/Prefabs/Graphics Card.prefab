@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8969528583540619959}
   - component: {fileID: -6789893632843334416}
   m_Layer: 0
-  m_Name: GPU
+  m_Name: Graphics Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713249918839174215}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.406, y: 0.77844656, z: 1.655}
   m_LocalScale: {x: 0.045, y: 0.024, z: 0.019}
   m_Children:
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144fd8a1d006db41ae7a2066711938e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoldingText: {fileID: 0}
   ConnectionPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -160,7 +161,9 @@ MonoBehaviour:
   ObjectToConnectTo: {fileID: 0}
   threshhold: 0.01
   snapPosition: {x: 53.2, y: 61.5, z: -12.99}
+  snapScale: {x: 31.75188, y: 16.93434, z: 3.573748}
   snapRotation: {x: 0, y: 0, z: 0}
+  resetPoint: {fileID: 0}
 --- !u!1 &3722348479364227156
 GameObject:
   m_ObjectHideFlags: 0

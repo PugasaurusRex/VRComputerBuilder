@@ -284,6 +284,7 @@ MonoBehaviour:
   ObjectToConnectTo: {fileID: 0}
   threshhold: 0.01
   snapPosition: {x: 0, y: 0, z: 0}
+  snapScale: {x: 0, y: 0, z: 0}
   snapRotation: {x: 0, y: 0, z: 0}
   resetPoint: {fileID: 0}
 --- !u!1 &7536474718628710250

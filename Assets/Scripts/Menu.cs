@@ -13,9 +13,13 @@ public class Menu : MonoBehaviour
     public TMP_Text TutorialText;
     public bool tutorial = false;
 
+    public GameObject[] Parts;
+    bool won = false;
+
     AudioSource Speaker;
     public AudioClip ForwardSound;
     public AudioClip BackwardSound;
+    public AudioClip VictorySound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,23 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!won)
+        {
+            bool temp = true;
+            foreach (GameObject i in Parts)
+            {
+                if (!i.GetComponent<ConnectionPointScript>().connected)
+                {
+                    temp = false;
+                    break;
+                }
+            }
+            if (temp)
+            {
+                won = true;
+                Victory();
+            }
+        }
     }
 
     public void setPanel(int p)
@@ -97,5 +118,11 @@ public class Menu : MonoBehaviour
         {
             Debug.Log("No Audio");
         }
+    }
+
+    public void Victory()
+    {
+        Speaker.clip = VictorySound;
+        Speaker.PlayOneShot(Speaker.clip);
     }
 }

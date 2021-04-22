@@ -12,7 +12,7 @@ public class ConnectionPointScript : MonoBehaviour
     public GameObject ObjectToConnectTo;
 
     //bool tutorial = true;
-    bool connected = false;
+    public bool connected = false;
     bool disableCollider = false;
     bool grabbed = false;
 
@@ -25,6 +25,11 @@ public class ConnectionPointScript : MonoBehaviour
     public Vector3 snapScale;
     public Vector3 snapRotation;
     public GameObject resetPoint;
+
+    public AudioSource Speaker;
+    public AudioClip ConnectSound;
+    public AudioClip CollisionSound;
+    public AudioClip GrabSound;
 
     // Start is called before the first frame update
     void Start()

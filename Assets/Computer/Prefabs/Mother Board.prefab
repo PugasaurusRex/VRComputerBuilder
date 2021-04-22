@@ -246,6 +246,7 @@ MonoBehaviour:
   threshhold: 0.01
   snapPosition: {x: 68.7, y: 9, z: -20.16}
   snapScale: {x: 14.16049, y: 19.9967, z: 3.774779}
+  snapRotation: {x: 0, y: 0, z: 0}
   resetPoint: {fileID: 0}
 --- !u!1 &4252371758389340278
 GameObject:

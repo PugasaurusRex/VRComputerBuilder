@@ -146,7 +146,8 @@ MonoBehaviour:
   ObjectToConnectTo: {fileID: 0}
   threshhold: 0.01
   snapPosition: {x: -38.1, y: 0, z: -35.79}
-  snapScale: {x: 0, y: 0, z: 0}
+  snapScale: {x: 17.64989, y: 17.64989, z: 4.704956}
+  snapRotation: {x: 0, y: 0, z: 0}
   resetPoint: {fileID: 0}
 --- !u!1 &6457009088599606033
 GameObject:

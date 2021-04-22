@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144fd8a1d006db41ae7a2066711938e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoldingText: {fileID: 0}
   ConnectionPoints:
   - {fileID: 1930934293733810276}
   - {fileID: 8069790879925518905}
@@ -151,7 +152,9 @@ MonoBehaviour:
   ObjectToConnectTo: {fileID: 0}
   threshhold: 0.01
   snapPosition: {x: -2.59, y: 0.376, z: -2.849}
+  snapScale: {x: 0.9469591, y: 0.6705807, z: 1.071315}
   snapRotation: {x: 0, y: 0, z: 0}
+  resetPoint: {fileID: 0}
 --- !u!1 &1930934293733810276
 GameObject:
   m_ObjectHideFlags: 0

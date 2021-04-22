@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9196887258714878854}
   - component: {fileID: 3115921753164645649}
   m_Layer: 0
-  m_Name: EVO
+  m_Name: Micro SSD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144fd8a1d006db41ae7a2066711938e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoldingText: {fileID: 0}
   ConnectionPoints:
   - {fileID: 0}
   ConnectTo:
@@ -152,7 +153,9 @@ MonoBehaviour:
   ObjectToConnectTo: {fileID: 0}
   threshhold: 0.01
   snapPosition: {x: -5.11, y: 0.02, z: -0.66}
+  snapScale: {x: 0.9548655, y: 0.6761796, z: 0.9548655}
   snapRotation: {x: 0, y: 0, z: 0}
+  resetPoint: {fileID: 0}
 --- !u!1 &6525174960762225583
 GameObject:
   m_ObjectHideFlags: 0

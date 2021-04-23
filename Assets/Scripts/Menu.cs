@@ -105,7 +105,12 @@ public class Menu : MonoBehaviour
 
             tutorial = !tutorial;
 
-            if(tutorial)
+            foreach (GameObject i in Parts)
+            {
+                i.GetComponent<ConnectionPointScript>().tutorial = tutorial;
+            }
+
+            if (tutorial)
             {
                 TutorialText.text = "ON";
             }

@@ -11,10 +11,12 @@ public class ConnectionPointScript : MonoBehaviour
     public GameObject[] ConnectTo;
     public GameObject ObjectToConnectTo;
 
-    //bool tutorial = true;
+    public bool tutorial = false;
     public bool connected = false;
     bool disableCollider = false;
     bool grabbed = false;
+    bool firstGrab;
+    bool collided;
 
     public float threshhold = .01f;
 
@@ -26,7 +28,7 @@ public class ConnectionPointScript : MonoBehaviour
     public Vector3 snapRotation;
     public GameObject resetPoint;
 
-    public AudioSource Speaker;
+    AudioSource Speaker;
     public AudioClip ConnectSound;
     public AudioClip CollisionSound;
     public AudioClip GrabSound;
@@ -34,6 +36,8 @@ public class ConnectionPointScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Speaker = GetComponent<AudioSource>();
+
         grab = this.GetComponent<OVRGrabbable>();
         Rig = this.GetComponent<Rigidbody>();
     }
@@ -45,6 +49,25 @@ public class ConnectionPointScript : MonoBehaviour
         {
             HoldingText.text = gameObject.name;
             grabbed = true;
+
+            if (!firstGrab)
+            {
+                Speaker.clip = GrabSound;
+                Speaker.PlayOneShot(Speaker.clip);
+                firstGrab = true;
+
+                if(tutorial)
+                {
+                    foreach(GameObject i in ConnectionPoints)
+                    {
+                        i.GetComponentInChildren<ParticleSystem>().Play();
+                    }
+                    foreach (GameObject i in ConnectTo)
+                    {
+                        i.GetComponentInChildren<ParticleSystem>().Play();
+                    }
+                }
+            }
 
             // Check all connections if in range
             if(ConnectionPoints.Length > 0)
@@ -60,12 +83,33 @@ public class ConnectionPointScript : MonoBehaviour
                     }
                 }
             }
+
+            if(connected)
+            {
+                Speaker.clip = ConnectSound;
+                Speaker.PlayOneShot(Speaker.clip);
+            }
         }
 
         if(grabbed && !grab.isGrabbed)
         {
+            firstGrab = false;
             grabbed = false;
             HoldingText.text = "";
+
+            Speaker.clip = GrabSound;
+            Speaker.PlayOneShot(Speaker.clip);
+
+            foreach (GameObject i in ConnectionPoints)
+            {
+                i.GetComponentInChildren<ParticleSystem>().Pause();
+                i.GetComponentInChildren<ParticleSystem>().Clear();
+            }
+            foreach (GameObject i in ConnectTo)
+            {
+                i.GetComponentInChildren<ParticleSystem>().Pause();
+                i.GetComponentInChildren<ParticleSystem>().Clear();
+            }
         }
 
         if (connected)
@@ -89,5 +133,23 @@ public class ConnectionPointScript : MonoBehaviour
                 Rig.velocity = Vector3.zero;
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!collided)
+        {
+            Speaker.clip = CollisionSound;
+            Speaker.PlayOneShot(Speaker.clip);
+
+            collided = true;
+            StartCoroutine(Collision());
+        }
+    }
+
+    IEnumerator Collision()
+    {
+        yield return new WaitForSeconds(.25f);
+        collided = false;
     }
 }

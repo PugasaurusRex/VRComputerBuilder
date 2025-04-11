@@ -1,7 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ConnectionPointScript : MonoBehaviour
 {
@@ -20,7 +22,7 @@ public class ConnectionPointScript : MonoBehaviour
 
     public float threshhold = .01f;
 
-    OVRGrabbable grab;
+    XRGrabInteractable grab;
     Rigidbody Rig;
 
     public Vector3 snapPosition;
@@ -38,14 +40,16 @@ public class ConnectionPointScript : MonoBehaviour
     {
         Speaker = GetComponent<AudioSource>();
 
-        grab = this.GetComponent<OVRGrabbable>();
+        grab = this.GetComponent<XRGrabInteractable>();
         Rig = this.GetComponent<Rigidbody>();
+
+        grab.interactionManager = FindFirstObjectByType<XRInteractionManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!connected && grab.isGrabbed)
+        if(!connected && grab.IsGrabbed())
         {
             HoldingText.text = gameObject.name;
             grabbed = true;
@@ -60,15 +64,25 @@ public class ConnectionPointScript : MonoBehaviour
                 {
                     foreach(GameObject i in ConnectionPoints)
                     {
+                        ParticleSystem system = i.GetComponentInChildren<ParticleSystem>();
+
+                        if (!system)
+                            continue;
+
                         i.GetComponentInChildren<ParticleSystem>().Play();
                     }
                     foreach (GameObject i in ConnectTo)
                     {
+                        ParticleSystem system = i.GetComponentInChildren<ParticleSystem>();
+
+                        if (!system)
+                            continue;
+
                         i.GetComponentInChildren<ParticleSystem>().Play();
                     }
                 }
             }
-
+            
             // Check all connections if in range
             if(ConnectionPoints.Length > 0)
             {
@@ -88,10 +102,15 @@ public class ConnectionPointScript : MonoBehaviour
             {
                 Speaker.clip = ConnectSound;
                 Speaker.PlayOneShot(Speaker.clip);
+
+                foreach (IXRSelectInteractable select in grab.interactorsSelecting)
+                {
+                    grab.interactionManager.SelectExit(select.firstInteractorSelecting, grab);
+                }
             }
         }
 
-        if(grabbed && !grab.isGrabbed)
+        if(grabbed && !grab.IsGrabbed())
         {
             firstGrab = false;
             grabbed = false;
@@ -102,11 +121,21 @@ public class ConnectionPointScript : MonoBehaviour
 
             foreach (GameObject i in ConnectionPoints)
             {
+                ParticleSystem system = i.GetComponentInChildren<ParticleSystem>();
+
+                if (!system)
+                    continue;
+
                 i.GetComponentInChildren<ParticleSystem>().Pause();
                 i.GetComponentInChildren<ParticleSystem>().Clear();
             }
             foreach (GameObject i in ConnectTo)
             {
+                ParticleSystem system = i.GetComponentInChildren<ParticleSystem>();
+
+                if (!system)
+                    continue;
+
                 i.GetComponentInChildren<ParticleSystem>().Pause();
                 i.GetComponentInChildren<ParticleSystem>().Clear();
             }
@@ -114,7 +143,7 @@ public class ConnectionPointScript : MonoBehaviour
 
         if (connected)
         {
-            if(!disableCollider && !grab.isGrabbed)
+            if (!disableCollider)
             {
                 this.GetComponent<Collider>().enabled = false;
                 disableCollider = true;
@@ -125,13 +154,11 @@ public class ConnectionPointScript : MonoBehaviour
             this.transform.localEulerAngles = snapRotation;
             this.transform.localScale = snapScale;
         }
-        else
+
+        if (!connected && transform.position.y < 0.2f)
         {
-            if(transform.position.y < 0.2f)
-            {
-                transform.position = resetPoint.transform.position;
-                Rig.velocity = Vector3.zero;
-            }
+            transform.position = resetPoint.transform.position;
+            Rig.linearVelocity = Vector3.zero;
         }
     }
 

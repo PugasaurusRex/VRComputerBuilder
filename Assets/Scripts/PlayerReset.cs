@@ -17,7 +17,7 @@ public class PlayerReset : MonoBehaviour
     {
         if(transform.position.y < -1)
         {
-            Rig.velocity = Vector3.zero;
+            Rig.linearVelocity = Vector3.zero;
             transform.position = new Vector3(0, 1, 0.75f);
         }
     }

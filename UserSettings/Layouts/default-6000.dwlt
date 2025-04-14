@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 340
+  controlID: 113
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 85
+  controlID: 75
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -1404,7 +1404,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 6.200012}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 16fbffff26a40000
+      m_ExpandedIDs: 16fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2051,9 +2051,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -0.7791729, y: 1.3021922, z: 0.9563601}
+    m_Target: {x: -0.79027456, y: 1.3086649, z: 0.9654234}
     speed: 2
-    m_Value: {x: -0.7791729, y: 1.3021922, z: 0.9563601}
+    m_Value: {x: -0.79027456, y: 1.3086649, z: 0.9654234}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -2099,9 +2099,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.21863472, y: 0.31777197, z: -0.075510316, w: 0.91957235}
+    m_Target: {x: 0.154981, y: 0.16428049, z: -0.026099013, w: 0.9738652}
     speed: 2
-    m_Value: {x: -0.21863472, y: -0.31777197, z: 0.075510316, w: -0.9195723}
+    m_Value: {x: -0.154981, y: -0.16428049, z: 0.026099013, w: -0.9738652}
   m_Size:
     m_Target: 0.023174252
     speed: 2

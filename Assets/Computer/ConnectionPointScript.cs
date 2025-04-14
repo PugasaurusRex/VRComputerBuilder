@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class ConnectionPointScript : MonoBehaviour
 {
@@ -103,9 +105,17 @@ public class ConnectionPointScript : MonoBehaviour
                 Speaker.clip = ConnectSound;
                 Speaker.PlayOneShot(Speaker.clip);
 
-                foreach (IXRSelectInteractable select in grab.interactorsSelecting)
+                // Get the interaction manager from the grab interactable
+                var interactionManager = grab.interactionManager;
+                if (interactionManager == null) return;
+
+                // Create a copy of the selecting interactors list since it will be modified
+                var selectingInteractors = new List<IXRSelectInteractor>(grab.interactorsSelecting);
+
+                // Force each interactor to release the grab
+                foreach (var interactor in selectingInteractors)
                 {
-                    grab.interactionManager.SelectExit(select.firstInteractorSelecting, grab);
+                    interactionManager.SelectExit(interactor, grab);
                 }
             }
         }
